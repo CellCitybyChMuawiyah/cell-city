@@ -1,17 +1,22 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>CELL CITY | Mobile Phones & Accessories</title>
+<title>CELL CITY | Mobile Phones & Accessories in Ghouri Town</title>
+
+<meta name="description" content="CELL CITY - Mobile phones and accessories shop at Ghouri Mobile Mall, Basement, Shop 19, Ghouri Town. Shop iPhone, Samsung, Infinix, OPPO, Redmi, Realme and mobile accessories.">
+
+<meta name="keywords" content="Cell City, mobile shop Ghouri Town, mobile phones Ghouri Town, iPhone Ghouri Town, Samsung Ghouri Town, mobile accessories Ghouri Town, Cell City Islamabad">
 
 <style>
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial, sans-serif;
+    font-family:Arial,sans-serif;
 }
 
 body{
@@ -57,6 +62,11 @@ nav a{
 
 .hero p{
     font-size:20px;
+    margin-bottom:15px;
+}
+
+.location{
+    font-size:17px;
     margin-bottom:25px;
 }
 
@@ -68,6 +78,18 @@ nav a{
     border-radius:30px;
     text-decoration:none;
     font-weight:bold;
+    margin:5px;
+}
+
+.maps{
+    display:inline-block;
+    background:white;
+    color:#0756a8;
+    padding:14px 25px;
+    border-radius:30px;
+    text-decoration:none;
+    font-weight:bold;
+    margin:5px;
 }
 
 .container{
@@ -141,6 +163,14 @@ nav a{
     transform:translateY(-5px);
 }
 
+.card img{
+    width:100%;
+    height:230px;
+    object-fit:contain;
+    border-radius:12px;
+    margin-bottom:15px;
+}
+
 .phone-icon{
     font-size:65px;
     margin-bottom:15px;
@@ -174,7 +204,7 @@ nav a{
 
 .about{
     background:white;
-    padding:40px 20px;
+    padding:45px 20px;
     margin-top:30px;
     text-align:center;
 }
@@ -182,6 +212,23 @@ nav a{
 .about h2{
     color:#0756a8;
     margin-bottom:15px;
+}
+
+.about p{
+    margin:10px 0;
+    line-height:1.6;
+}
+
+.address-box{
+    background:#eef6ff;
+    border-radius:15px;
+    padding:25px;
+    margin-top:25px;
+}
+
+.address-box h3{
+    color:#0756a8;
+    margin-bottom:10px;
 }
 
 .contact{
@@ -196,7 +243,7 @@ nav a{
 }
 
 .contact p{
-    margin:10px 0;
+    margin:12px 0;
 }
 
 .contact a{
@@ -210,14 +257,8 @@ footer{
     padding:18px;
 }
 
-.no-result{
-    text-align:center;
-    color:#777;
-    display:none;
-    padding:30px;
-}
-
 @media(max-width:700px){
+
     header{
         flex-direction:column;
         gap:12px;
@@ -235,14 +276,9 @@ footer{
     .hero p{
         font-size:17px;
     }
-}.card img{
-    width:100%;
-    height:230px;
-    object-fit:contain;
-    border-radius:12px;
-    margin-bottom:15px;
 }
 </style>
+
 </head>
 
 <body>
@@ -261,21 +297,27 @@ footer{
 
 </header>
 
-
 <section class="hero" id="home">
 
 <h1>CELL CITY</h1>
 
 <p>Your Trusted Mobile Phone & Accessories Shop</p>
 
+<div class="location">
+📍 Ghouri Mobile Mall, Basement, Shop 19, Ghouri Town
+</div>
+
 <a class="whatsapp"
 href="https://wa.me/923135705334"
 target="_blank">
-💬 WhatsApp Us
-</a>
+💬 WhatsApp Us </a>
+
+<a class="maps"
+href="https://www.google.com/maps/search/?api=1&query=Ghouri+Mobile+Mall+Ghouri+Town"
+target="_blank">
+📍 Find Us on Google Maps </a>
 
 </section>
-
 
 <div class="container">
 
@@ -289,24 +331,13 @@ onkeyup="searchProducts()">
 
 </div>
 
-
 <div class="categories">
 
-<button onclick="filterProducts('all')">All</button>
-<button onclick="filterProducts('iphone')">iPhone</button>
-<button onclick="filterProducts('samsung')">Samsung</button>
-<button onclick="filterProducts('infinix')">Infinix</button>
-<button onclick="filterProducts('oppo')">OPPO</button>
-<button onclick="filterProducts('redmi')">Redmi/Xiaomi</button>
-<button onclick="filterProducts('realme')">Realme</button>
-<button onclick="filterProducts('accessories')">Accessories</button>
+<button onclick="filterProducts('all')">All</button> <button onclick="filterProducts('iphone')">iPhone</button> <button onclick="filterProducts('samsung')">Samsung</button> <button onclick="filterProducts('infinix')">Infinix</button> <button onclick="filterProducts('oppo')">OPPO</button> <button onclick="filterProducts('redmi')">Redmi/Xiaomi</button> <button onclick="filterProducts('realme')">Realme</button> <button onclick="filterProducts('accessories')">Accessories</button>
 
 </div>
 
-
 <section class="section" id="phones">
-
-<section class="section">
 
 <h2>🍎 iPhone</h2>
 
@@ -314,6 +345,7 @@ onkeyup="searchProducts()">
 
 <div class="card" data-category="iphone">
 <img src="images/iphone17promax.jpg" alt="iPhone 17 Pro Max">
+<h3>iPhone 17 Pro Max</h3>
 <p>Pro Max Series</p>
 <div class="price">Contact for Price</div>
 <a class="order" href="https://wa.me/923135705334" target="_blank">WhatsApp</a>
@@ -321,7 +353,7 @@ onkeyup="searchProducts()">
 
 <div class="card" data-category="iphone">
 <img src="images/iphone17pro.jpg" alt="iPhone 17 Pro">
- <h3>iPhone 17 Pro</h3>
+<h3>iPhone 17 Pro</h3>
 <p>Pro Series</p>
 <div class="price">Contact for Price</div>
 <a class="order" href="https://wa.me/923135705334" target="_blank">WhatsApp</a>
@@ -368,7 +400,7 @@ onkeyup="searchProducts()">
 </div>
 
 <div class="card" data-category="iphone">
-<img src="images/iphone15.jpg" alt="iPhone 15"> 
+<img src="images/iphone15.jpg" alt="iPhone 15">
 <h3>iPhone 15</h3>
 <p>iPhone Series</p>
 <div class="price">Contact for Price</div>
@@ -377,6 +409,8 @@ onkeyup="searchProducts()">
 
 </div>
 </section>
+
+<section class="section">
 
 <h2>📱 Samsung</h2>
 
@@ -457,7 +491,6 @@ onkeyup="searchProducts()">
 </div>
 </section>
 
-
 <section class="section">
 
 <h2>📱 Infinix</h2>
@@ -490,7 +523,6 @@ onkeyup="searchProducts()">
 
 </div>
 </section>
-
 
 <section class="section">
 
@@ -525,7 +557,6 @@ onkeyup="searchProducts()">
 </div>
 </section>
 
-
 <section class="section">
 
 <h2>📱 Redmi / Xiaomi</h2>
@@ -559,7 +590,6 @@ onkeyup="searchProducts()">
 </div>
 </section>
 
-
 <section class="section">
 
 <h2>📱 Realme</h2>
@@ -592,7 +622,6 @@ onkeyup="searchProducts()">
 
 </div>
 </section>
-
 
 <section class="section" id="accessories">
 
@@ -725,7 +754,6 @@ onkeyup="searchProducts()">
 
 </div>
 
-
 <section class="about" id="about">
 
 <div class="container">
@@ -738,14 +766,26 @@ smartphones from popular brands along with a wide range of
 mobile and computer accessories.
 </p>
 
-<p style="margin-top:15px;">
-📍 Ghouri Mobile Mall, Basement, Shop 19, Ghouri Town
+<div class="address-box">
+
+<h3>📍 Visit Our Shop</h3>
+
+<p>
+<strong>Ghouri Mobile Mall</strong><br>
+Basement, Shop 19<br>
+Ghouri Town
 </p>
+
+<a class="maps"
+href="https://www.google.com/maps/search/?api=1&query=Ghouri+Mobile+Mall+Ghouri+Town"
+target="_blank">
+📍 Get Directions </a>
+
+</div>
 
 </div>
 
 </section>
-
 
 <section class="contact" id="contact">
 
@@ -753,13 +793,13 @@ mobile and computer accessories.
 
 <p>📍 Ghouri Mobile Mall, Basement, Shop 19, Ghouri Town</p>
 
+<p>📱 WhatsApp: 03135705334</p>
+
 <p>📧
 <a href="mailto:muawiyahkhan924@gmail.com">
 muawiyahkhan924@gmail.com
 </a>
 </p>
-
-<p>📱 WhatsApp: 03135705334</p>
 
 <p>📸 Instagram:
 <a href="https://www.instagram.com/cell_city19/" target="_blank">
@@ -772,18 +812,20 @@ muawiyahkhan924@gmail.com
 <a class="whatsapp"
 href="https://wa.me/923135705334"
 target="_blank">
-💬 Contact on WhatsApp
-</a>
+💬 Contact on WhatsApp </a>
+
+<a class="maps"
+href="https://www.google.com/maps/search/?api=1&query=Ghouri+Mobile+Mall+Ghouri+Town"
+target="_blank">
+📍 View Location </a>
 
 </section>
-
 
 <footer>
 
 <p>© 2026 CELL CITY. All Rights Reserved.</p>
 
 </footer>
-
 
 <script>
 
@@ -796,9 +838,11 @@ function filterProducts(category){
         if(category === "all"){
             card.style.display = "block";
         }
+
         else if(card.dataset.category === category){
             card.style.display = "block";
         }
+
         else{
             card.style.display = "none";
         }
@@ -824,6 +868,7 @@ function searchProducts(){
         if(text.includes(input)){
             card.style.display = "block";
         }
+
         else{
             card.style.display = "none";
         }
