@@ -15,7 +15,7 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial,sans-serif;
+    font-family:Arial, sans-serif;
 }
 
 body{
@@ -23,28 +23,148 @@ body{
     color:#222;
 }
 
+/* HEADER */
 header{
     background:#0757a6;
     color:white;
-    padding:18px 5%;
+    padding:15px 5%;
     display:flex;
     justify-content:space-between;
     align-items:center;
-    flex-wrap:wrap;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 3px 12px rgba(0,0,0,0.15);
 }
 
 .logo{
     font-size:28px;
     font-weight:bold;
+    letter-spacing:1px;
+}
+
+/* DESKTOP NAV */
+nav{
+    display:flex;
+    align-items:center;
+    gap:25px;
 }
 
 nav a{
     color:white;
     text-decoration:none;
-    margin-left:20px;
     font-weight:bold;
 }
 
+/* MENU BUTTON */
+.menu-btn{
+    font-size:30px;
+    cursor:pointer;
+    background:none;
+    border:none;
+    color:white;
+    display:none;
+}
+
+/* SIDE MENU */
+.side-menu{
+    position:fixed;
+    top:0;
+    right:-350px;
+    width:330px;
+    height:100%;
+    background:white;
+    z-index:2000;
+    box-shadow:-5px 0 15px rgba(0,0,0,0.2);
+    transition:0.3s;
+    overflow-y:auto;
+}
+
+.side-menu.active{
+    right:0;
+}
+
+.menu-header{
+    background:#0757a6;
+    color:white;
+    padding:22px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.menu-header h2{
+    margin:0;
+}
+
+.close-btn{
+    font-size:28px;
+    cursor:pointer;
+}
+
+.menu-item{
+    border-bottom:1px solid #eee;
+}
+
+.menu-item > a,
+.menu-item > button{
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:17px 20px;
+    background:white;
+    border:none;
+    color:#222;
+    text-decoration:none;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.menu-item > a:hover,
+.menu-item > button:hover{
+    background:#f0f6ff;
+    color:#0757a6;
+}
+
+/* SUB MENU */
+.submenu{
+    display:none;
+    background:#f7faff;
+}
+
+.submenu.active{
+    display:block;
+}
+
+.submenu a{
+    display:block;
+    padding:13px 35px;
+    color:#444;
+    text-decoration:none;
+    border-top:1px solid #eee;
+}
+
+.submenu a:hover{
+    background:#e7f1ff;
+    color:#0757a6;
+}
+
+/* OVERLAY */
+.overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.4);
+    display:none;
+    z-index:1500;
+}
+
+.overlay.active{
+    display:block;
+}
+
+/* HERO */
 .hero{
     text-align:center;
     padding:55px 20px;
@@ -86,6 +206,7 @@ nav a{
     background:#25D366;
 }
 
+/* SEARCH */
 .search-box{
     text-align:center;
     padding:25px;
@@ -100,6 +221,7 @@ nav a{
     font-size:16px;
 }
 
+/* CATEGORIES */
 .categories{
     text-align:center;
     padding:10px 20px 30px;
@@ -116,13 +238,9 @@ nav a{
     font-weight:bold;
 }
 
-.category-btn:hover{
-    background:#0757a6;
-    color:white;
-}
-
+/* PRODUCTS */
 .products{
-    padding:40px 5%;
+    padding:20px 5%;
 }
 
 .products h2{
@@ -143,11 +261,12 @@ nav a{
     border-radius:12px;
     text-align:center;
     box-shadow:0 3px 12px rgba(0,0,0,0.1);
-    transition:0.3s;
+    transition:0.25s;
 }
 
 .card:hover{
-    transform:translateY(-4px);
+    transform:translateY(-5px);
+    box-shadow:0 6px 18px rgba(0,0,0,0.15);
 }
 
 .card img{
@@ -168,12 +287,6 @@ nav a{
     color:#555;
 }
 
-.price{
-    color:#0757a6;
-    font-weight:bold;
-    margin-bottom:15px;
-}
-
 .card a{
     display:inline-block;
     background:#25D366;
@@ -188,7 +301,7 @@ section{
     padding:40px 5%;
 }
 
-.about,.contact{
+.about, .contact{
     background:white;
     margin-top:30px;
 }
@@ -222,19 +335,28 @@ footer{
     margin-top:30px;
 }
 
-@media(max-width:600px){
+/* MOBILE */
+@media(max-width:700px){
 
     header{
-        justify-content:center;
-        gap:15px;
+        padding:15px 20px;
     }
 
-    nav a{
-        margin:5px;
+    nav{
+        display:none;
+    }
+
+    .menu-btn{
+        display:block;
     }
 
     .hero h1{
         font-size:32px;
+    }
+
+    .side-menu{
+        width:85%;
+        max-width:330px;
     }
 }
 </style>
@@ -243,530 +365,466 @@ footer{
 
 <body>
 
+<!-- HEADER -->
+
 <header>
 
+```
 <div class="logo">CELL CITY</div>
 
 <nav>
-<a href="#home">Home</a>
-<a href="#products">Products</a>
-<a href="#about">About</a>
-<a href="#contact">Contact</a>
+    <a href="#home">Home</a>
+    <a href="#products">Products</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
 </nav>
+
+<button class="menu-btn" onclick="openMenu()">☰</button>
+```
 
 </header>
 
+<!-- SIDE MENU -->
+
+<div class="overlay" id="overlay" onclick="closeMenu()"></div>
+
+<div class="side-menu" id="sideMenu">
+
+```
+<div class="menu-header">
+    <h2>CELL CITY</h2>
+    <span class="close-btn" onclick="closeMenu()">×</span>
+</div>
+
+<div class="menu-item">
+    <a href="#home" onclick="closeMenu()">
+        Home
+    </a>
+</div>
+
+<!-- PRODUCTS -->
+<div class="menu-item">
+
+    <button onclick="toggleSubmenu('productsMenu')">
+        Products
+        <span>⌄</span>
+    </button>
+
+    <div class="submenu" id="productsMenu">
+
+        <!-- IPHONE -->
+        <div class="menu-item">
+
+            <button onclick="toggleSubmenu('iphoneMenu')">
+                📱 iPhone
+                <span>⌄</span>
+            </button>
+
+            <div class="submenu" id="iphoneMenu">
+
+                <a href="#products">iPhone 17 Pro Max</a>
+                <a href="#products">iPhone 17 Pro</a>
+                <a href="#products">iPhone 17</a>
+                <a href="#products">iPhone 16e</a>
+                <a href="#products">iPhone 16 Pro</a>
+                <a href="#products">iPhone 16 Pro Max</a>
+                <a href="#products">iPhone 16</a>
+                <a href="#products">iPhone 15</a>
+
+            </div>
+
+        </div>
+
+        <!-- SAMSUNG -->
+        <div class="menu-item">
+
+            <button onclick="toggleSubmenu('samsungMenu')">
+                📱 Samsung
+                <span>⌄</span>
+            </button>
+
+            <div class="submenu" id="samsungMenu">
+
+                <a href="#products">Galaxy S26 Ultra</a>
+                <a href="#products">Galaxy S26 Plus</a>
+                <a href="#products">Galaxy S26</a>
+                <a href="#products">Galaxy S25 Ultra</a>
+                <a href="#products">Galaxy S25</a>
+                <a href="#products">Galaxy A57</a>
+                <a href="#products">Galaxy A37</a>
+                <a href="#products">Galaxy Z Flip</a>
+                <a href="#products">Galaxy Z Fold</a>
+
+            </div>
+
+        </div>
+
+        <!-- INFINIX -->
+        <div class="menu-item">
+
+            <button onclick="toggleSubmenu('infinixMenu')">
+                📱 Infinix
+                <span>⌄</span>
+            </button>
+
+            <div class="submenu" id="infinixMenu">
+
+                <a href="#products">View Infinix Models</a>
+
+            </div>
+
+        </div>
+
+        <!-- OPPO -->
+        <div class="menu-item">
+
+            <button onclick="toggleSubmenu('oppoMenu')">
+                📱 OPPO
+                <span>⌄</span>
+            </button>
+
+            <div class="submenu" id="oppoMenu">
+
+                <a href="#products">View OPPO Models</a>
+
+            </div>
+
+        </div>
+
+        <!-- REDMI -->
+        <div class="menu-item">
+
+            <button onclick="toggleSubmenu('redmiMenu')">
+                📱 Redmi / Xiaomi
+                <span>⌄</span>
+            </button>
+
+            <div class="submenu" id="redmiMenu">
+
+                <a href="#products">View Redmi / Xiaomi Models</a>
+
+            </div>
+
+        </div>
+
+        <!-- REALME -->
+        <div class="menu-item">
+
+            <button onclick="toggleSubmenu('realmeMenu')">
+                📱 Realme
+                <span>⌄</span>
+            </button>
+
+            <div class="submenu" id="realmeMenu">
+
+                <a href="#products">View Realme Models</a>
+
+            </div>
+
+        </div>
+
+        <!-- ACCESSORIES -->
+        <div class="menu-item">
+
+            <button onclick="toggleSubmenu('accessoriesMenu')">
+                🎧 Accessories
+                <span>⌄</span>
+            </button>
+
+            <div class="submenu" id="accessoriesMenu">
+
+                <a href="#products">Silicon Covers</a>
+                <a href="#products">Official Covers</a>
+                <a href="#products">Jelly Covers</a>
+                <a href="#products">Camera Lens Protectors</a>
+                <a href="#products">Screen Protectors</a>
+                <a href="#products">Chargers</a>
+                <a href="#products">Speakers</a>
+                <a href="#products">USB Cables</a>
+                <a href="#products">Earbuds</a>
+                <a href="#products">Headphones</a>
+                <a href="#products">Keyboard</a>
+                <a href="#products">Mouse</a>
+                <a href="#products">Handsfree</a>
+                <a href="#products">Power Bank</a>
+                <a href="#products">Computer Accessories</a>
+                <a href="#products">Memory Cards</a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="menu-item">
+    <a href="#about" onclick="closeMenu()">
+        About
+    </a>
+</div>
+
+<div class="menu-item">
+    <a href="#contact" onclick="closeMenu()">
+        Contact
+    </a>
+</div>
+```
+
+</div>
+
+<!-- HERO -->
+
 <section class="hero" id="home">
 
+```
 <h1>CELL CITY</h1>
 
 <p>Mobile Phones & Accessories</p>
 
 <p class="location">
-📍 Ghouri Mobile Mall, Basement, Shop 19, Ghouri Town
+    📍 Ghouri Mobile Mall, Basement, Shop 19, Ghouri Town
 </p>
 
 <div class="buttons">
 
-<a class="btn"
-href="https://www.google.com/maps/search/?api=1&query=Ghouri+Mobile+Mall+Ghouri+Town"
-target="_blank">
-📍 Find Us on Google Maps </a>
+    <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Ghouri+Mobile+Mall+Ghouri+Town" target="_blank">
+        📍 Find Us on Google Maps
+    </a>
 
-<a class="btn whatsapp"
-href="https://wa.me/923135705334"
-target="_blank">
-💬 WhatsApp Us </a>
+    <a class="btn whatsapp" href="https://wa.me/923135705334" target="_blank">
+        WhatsApp Us
+    </a>
 
 </div>
+```
 
 </section>
 
+<!-- SEARCH -->
+
 <div class="search-box">
 
-<input
-type="text"
-id="search"
-placeholder="🔍 Search mobile or accessory..."
-onkeyup="searchProducts()">
+```
+<input type="text"
+       id="search"
+       placeholder="🔍 Search mobile or accessory..."
+       onkeyup="searchProducts()">
+```
 
 </div>
+
+<!-- CATEGORY BUTTONS -->
 
 <div class="categories">
 
-<button class="category-btn" onclick="filterProducts('all')">All</button> <button class="category-btn" onclick="filterProducts('iphone')">iPhone</button> <button class="category-btn" onclick="filterProducts('samsung')">Samsung</button> <button class="category-btn" onclick="filterProducts('infinix')">Infinix</button> <button class="category-btn" onclick="filterProducts('oppo')">OPPO</button> <button class="category-btn" onclick="filterProducts('redmi')">Redmi/Xiaomi</button> <button class="category-btn" onclick="filterProducts('realme')">Realme</button> <button class="category-btn" onclick="filterProducts('accessories')">Accessories</button>
+```
+<button class="category-btn" onclick="filterProducts('all')">
+    All
+</button>
+
+<button class="category-btn" onclick="filterProducts('iphone')">
+    iPhone
+</button>
+
+<button class="category-btn" onclick="filterProducts('accessories')">
+    Accessories
+</button>
+```
 
 </div>
+
+<!-- PRODUCTS -->
 
 <section class="products" id="products">
 
 <h2>Our Products</h2>
 
-<!-- ================= iPHONE ================= -->
-
-<h2>🍎 iPhone</h2>
-
 <div class="grid">
+
+<!-- iPhone 17 Pro Max -->
 
 <div class="card product iphone">
 
 <img src="iphone17promax.jpg" alt="iPhone 17 Pro Max">
 
 <h3>iPhone 17 Pro Max</h3>
-<p>Pro Max Series</p>
-<div class="price">Contact for Price</div>
 
-<a href="https://wa.me/923135705334?text=I%20am%20interested%20in%20iPhone%2017%20Pro%20Max"
-target="_blank">WhatsApp</a>
+<p>Contact for Price</p>
+
+<a href="https://wa.me/923135705334?text=I%20am%20interested%20in%20iPhone%2017%20Pro%20Max" target="_blank">
+WhatsApp
+</a>
 
 </div>
+
+<!-- iPhone 17 Pro -->
 
 <div class="card product iphone">
 
 <img src="iphone17pro.jpg" alt="iPhone 17 Pro">
 
 <h3>iPhone 17 Pro</h3>
-<p>Pro Series</p>
-<div class="price">Contact for Price</div>
 
-<a href="https://wa.me/923135705334?text=I%20am%20interested%20in%20iPhone%2017%20Pro"
-target="_blank">WhatsApp</a>
+<p>Contact for Price</p>
+
+<a href="https://wa.me/923135705334?text=I%20am%20interested%20in%20iPhone%2017%20Pro" target="_blank">
+WhatsApp
+</a>
 
 </div>
+
+<!-- iPhone 17 -->
 
 <div class="card product iphone">
 
 <img src="iphone17.jpg" alt="iPhone 17">
 
 <h3>iPhone 17</h3>
-<p>Latest iPhone Series</p>
-<div class="price">Contact for Price</div>
 
-<a href="https://wa.me/923135705334?text=I%20am%20interested%20in%20iPhone%2017"
-target="_blank">WhatsApp</a>
+<p>Contact for Price</p>
+
+<a href="https://wa.me/923135705334?text=I%20am%20interested%20in%20iPhone%2017" target="_blank">
+WhatsApp
+</a>
 
 </div>
+
+<!-- iPhone 16e -->
 
 <div class="card product iphone">
 
 <img src="iphone16e.jpg" alt="iPhone 16e">
 
 <h3>iPhone 16e</h3>
-<p>iPhone 16 Series</p>
-<div class="price">Contact for Price</div>
 
-<a href="https://wa.me/923135705334?text=I%20am%20interested%20in%20iPhone%2016e"
-target="_blank">WhatsApp</a>
+<p>Contact for Price</p>
+
+<a href="https://wa.me/923135705334?text=I%20am%20interested%20in%20iPhone%2016e" target="_blank">
+WhatsApp
+</a>
 
 </div>
+
+<!-- iPhone 16 Pro -->
 
 <div class="card product iphone">
 
 <img src="iphone16pro.jpg" alt="iPhone 16 Pro">
 
 <h3>iPhone 16 Pro</h3>
-<p>Pro Series</p>
-<div class="price">Contact for Price</div>
 
-<a href="https://wa.me/923135705334?text=I%20am%20interested%20in%20iPhone%2016%20Pro"
-target="_blank">WhatsApp</a>
+<p>Contact for Price</p>
+
+<a href="https://wa.me/923135705334?text=I%20am%20interested%20in%20iPhone%2016%20Pro" target="_blank">
+WhatsApp
+</a>
 
 </div>
+
+<!-- iPhone 16 Pro Max -->
 
 <div class="card product iphone">
 
 <img src="iphone16promax.jpg" alt="iPhone 16 Pro Max">
 
 <h3>iPhone 16 Pro Max</h3>
-<p>Pro Max Series</p>
-<div class="price">Contact for Price</div>
 
-<a href="https://wa.me/923135705334?text=I%20am%20interested%20in%20iPhone%2016%20Pro%20Max"
-target="_blank">WhatsApp</a>
+<p>Contact for Price</p>
+
+<a href="https://wa.me/923135705334?text=I%20am%20interested%20in%20iPhone%2016%20Pro%20Max" target="_blank">
+WhatsApp
+</a>
 
 </div>
+
+<!-- iPhone 16 -->
 
 <div class="card product iphone">
 
 <img src="iphone16.jpg" alt="iPhone 16">
 
 <h3>iPhone 16</h3>
-<p>iPhone Series</p>
-<div class="price">Contact for Price</div>
 
-<a href="https://wa.me/923135705334?text=I%20am%20interested%20in%20iPhone%2016"
-target="_blank">WhatsApp</a>
+<p>Contact for Price</p>
+
+<a href="https://wa.me/923135705334?text=I%20am%20interested%20in%20iPhone%2016" target="_blank">
+WhatsApp
+</a>
 
 </div>
+
+<!-- iPhone 15 -->
 
 <div class="card product iphone">
 
 <img src="iphone15.jpg" alt="iPhone 15">
 
 <h3>iPhone 15</h3>
-<p>iPhone Series</p>
-<div class="price">Contact for Price</div>
 
-<a href="https://wa.me/923135705334?text=I%20am%20interested%20in%20iPhone%2015"
-target="_blank">WhatsApp</a>
+<p>Contact for Price</p>
 
-</div>
-
-</div>
-
-<!-- ================= SAMSUNG ================= -->
-
-<h2>📱 Samsung</h2>
-
-<div class="grid">
-
-<div class="card product samsung">
-<img src="https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=600&q=80" alt="Samsung Galaxy S26 Ultra">
-<h3>Galaxy S26 Ultra</h3>
-<p>Galaxy S Series</p>
-<div class="price">Contact for Price</div>
-<a href="https://wa.me/923135705334?text=I%20am%20interested%20in%20Samsung%20Galaxy%20S26%20Ultra" target="_blank">WhatsApp</a>
-</div>
-
-<div class="card product samsung">
-<img src="https://images.unsplash.com/photo-1610945264803-c5f2c7c5c9c1?auto=format&fit=crop&w=600&q=80" alt="Samsung Galaxy S26 Plus">
-<h3>Galaxy S26+</h3>
-<p>Galaxy S Series</p>
-<div class="price">Contact for Price</div>
-<a href="https://wa.me/923135705334?text=I%20am%20interested%20in%20Samsung%20Galaxy%20S26%2B" target="_blank">WhatsApp</a>
-</div>
-
-<div class="card product samsung">
-<img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=600&q=80" alt="Samsung Galaxy S26">
-<h3>Galaxy S26</h3>
-<p>Galaxy S Series</p>
-<div class="price">Contact for Price</div>
-<a href="https://wa.me/923135705334?text=I%20am%20interested%20in%20Samsung%20Galaxy%20S26" target="_blank">WhatsApp</a>
-</div>
-
-<div class="card product samsung">
-<img src="https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?auto=format&fit=crop&w=600&q=80" alt="Samsung Galaxy S25 Ultra">
-<h3>Galaxy S25 Ultra</h3>
-<p>Galaxy S Series</p>
-<div class="price">Contact for Price</div>
-<a href="https://wa.me/923135705334?text=I%20am%20interested%20in%20Samsung%20Galaxy%20S25%20Ultra" target="_blank">WhatsApp</a>
-</div>
-
-<div class="card product samsung">
-<img src="https://images.unsplash.com/photo-1610945264810-1e5c4e5e5d85?auto=format&fit=crop&w=600&q=80" alt="Samsung Galaxy S25">
-<h3>Galaxy S25</h3>
-<p>Galaxy S Series</p>
-<div class="price">Contact for Price</div>
-<a href="https://wa.me/923135705334?text=I%20am%20interested%20in%20Samsung%20Galaxy%20S25" target="_blank">WhatsApp</a>
-</div>
-
-<div class="card product samsung">
-<img src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?auto=format&fit=crop&w=600&q=80" alt="Samsung Galaxy A57">
-<h3>Galaxy A57</h3>
-<p>Galaxy A Series</p>
-<div class="price">Contact for Price</div>
-<a href="https://wa.me/923135705334?text=I%20am%20interested%20in%20Samsung%20Galaxy%20A57" target="_blank">WhatsApp</a>
-</div>
-
-<div class="card product samsung">
-<img src="https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?auto=format&fit=crop&w=600&q=80" alt="Samsung Galaxy A37">
-<h3>Galaxy A37</h3>
-<p>Galaxy A Series</p>
-<div class="price">Contact for Price</div>
-<a href="https://wa.me/923135705334?text=I%20am%20interested%20in%20Samsung%20Galaxy%20A37" target="_blank">WhatsApp</a>
-</div>
-
-<div class="card product samsung">
-<img src="https://images.unsplash.com/photo-1616348436168-de43ad0db179?auto=format&fit=crop&w=600&q=80" alt="Samsung Galaxy Z Fold">
-<h3>Galaxy Z Fold</h3>
-<p>Foldable Series</p>
-<div class="price">Contact for Price</div>
-<a href="https://wa.me/923135705334?text=I%20am%20interested%20in%20Samsung%20Galaxy%20Z%20Fold" target="_blank">WhatsApp</a>
-</div>
-
-<div class="card product samsung">
-<img src="https://images.unsplash.com/photo-1616348436168-de43ad0db179?auto=format&fit=crop&w=600&q=80" alt="Samsung Galaxy Z Flip">
-<h3>Galaxy Z Flip</h3>
-<p>Foldable Series</p>
-<div class="price">Contact for Price</div>
-<a href="https://wa.me/923135705334?text=I%20am%20interested%20in%20Samsung%20Galaxy%20Z%20Flip" target="_blank">WhatsApp</a>
-</div>
+<a href="https://wa.me/923135705334?text=I%20am%20interested%20in%20iPhone%2015" target="_blank">
+WhatsApp
+</a>
 
 </div>
 
-<!-- ================= INFINIX ================= -->
-
-<h2>📱 Infinix</h2>
-
-<div class="grid">
-
-<div class="card product infinix">
-<img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=600&q=80" alt="Infinix NOTE Series">
-<h3>Infinix NOTE Series</h3>
-<p>NOTE Smartphones</p>
-<div class="price">Contact for Price</div>
-<a href="https://wa.me/923135705334?text=I%20am%20interested%20in%20Infinix%20NOTE%20Series" target="_blank">WhatsApp</a>
-</div>
-
-<div class="card product infinix">
-<img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=600&q=80" alt="Infinix ZERO Series">
-<h3>Infinix ZERO Series</h3>
-<p>ZERO Smartphones</p>
-<div class="price">Contact for Price</div>
-<a href="https://wa.me/923135705334?text=I%20am%20interested%20in%20Infinix%20ZERO%20Series" target="_blank">WhatsApp</a>
-</div>
-
-<div class="card product infinix">
-<img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=600&q=80" alt="Infinix HOT Series">
-<h3>Infinix HOT Series</h3>
-<p>HOT Smartphones</p>
-<div class="price">Contact for Price</div>
-<a href="https://wa.me/923135705334?text=I%20am%20interested%20in%20Infinix%20HOT%20Series" target="_blank">WhatsApp</a>
-</div>
-
-</div>
-
-<!-- ================= OPPO ================= -->
-
-<h2>📱 OPPO</h2>
-
-<div class="grid">
-
-<div class="card product oppo">
-<img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=600&q=80" alt="OPPO Find Series">
-<h3>OPPO Find Series</h3>
-<p>Find Smartphones</p>
-<div class="price">Contact for Price</div>
-<a href="https://wa.me/923135705334?text=I%20am%20interested%20in%20OPPO%20Find%20Series" target="_blank">WhatsApp</a>
-</div>
-
-<div class="card product oppo">
-<img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=600&q=80" alt="OPPO Reno Series">
-<h3>OPPO Reno Series</h3>
-<p>Reno Smartphones</p>
-<div class="price">Contact for Price</div>
-<a href="https://wa.me/923135705334?text=I%20am%20interested%20in%20OPPO%20Reno%20Series" target="_blank">WhatsApp</a>
-</div>
-
-<div class="card product oppo">
-<img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=600&q=80" alt="OPPO A Series">
-<h3>OPPO A Series</h3>
-<p>A Series Smartphones</p>
-<div class="price">Contact for Price</div>
-<a href="https://wa.me/923135705334?text=I%20am%20interested%20in%20OPPO%20A%20Series" target="_blank">WhatsApp</a>
-</div>
-
-</div>
-
-<!-- ================= REDMI / XIAOMI ================= -->
-
-<h2>📱 Redmi / Xiaomi</h2>
-
-<div class="grid">
-
-<div class="card product redmi">
-<img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=600&q=80" alt="Redmi Note Series">
-<h3>Redmi Note Series</h3>
-<p>Redmi Note Smartphones</p>
-<div class="price">Contact for Price</div>
-<a href="https://wa.me/923135705334?text=I%20am%20interested%20in%20Redmi%20Note%20Series" target="_blank">WhatsApp</a>
-</div>
-
-<div class="card product redmi">
-<img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=600&q=80" alt="Redmi Series">
-<h3>Redmi Series</h3>
-<p>Redmi Smartphones</p>
-<div class="price">Contact for Price</div>
-<a href="https://wa.me/923135705334?text=I%20am%20interested%20in%20Redmi%20Series" target="_blank">WhatsApp</a>
-</div>
-
-<div class="card product redmi">
-<img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=600&q=80" alt="Xiaomi Series">
-<h3>Xiaomi Series</h3>
-<p>Xiaomi Smartphones</p>
-<div class="price">Contact for Price</div>
-<a href="https://wa.me/923135705334?text=I%20am%20interested%20in%20Xiaomi%20Series" target="_blank">WhatsApp</a>
-</div>
-
-</div>
-
-<!-- ================= REALME ================= -->
-
-<h2>📱 Realme</h2>
-
-<div class="grid">
-
-<div class="card product realme">
-<img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=600&q=80" alt="Realme GT Series">
-<h3>Realme GT Series</h3>
-<p>GT Smartphones</p>
-<div class="price">Contact for Price</div>
-<a href="https://wa.me/923135705334?text=I%20am%20interested%20in%20Realme%20GT%20Series" target="_blank">WhatsApp</a>
-</div>
-
-<div class="card product realme">
-<img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=600&q=80" alt="Realme Number Series">
-<h3>Realme Number Series</h3>
-<p>Number Series</p>
-<div class="price">Contact for Price</div>
-<a href="https://wa.me/923135705334?text=I%20am%20interested%20in%20Realme%20Number%20Series" target="_blank">WhatsApp</a>
-</div>
-
-<div class="card product realme">
-<img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=600&q=80" alt="Realme C Series">
-<h3>Realme C Series</h3>
-<p>C Series Smartphones</p>
-<div class="price">Contact for Price</div>
-<a href="https://wa.me/923135705334?text=I%20am%20interested%20in%20Realme%20C%20Series" target="_blank">WhatsApp</a>
-</div>
-
-</div>
-
-<!-- ================= ACCESSORIES ================= -->
-
-<h2>🎧 Mobile Accessories</h2>
-
-<div class="grid">
+<!-- ACCESSORIES -->
 
 <div class="card product accessories">
-<img src="https://images.unsplash.com/photo-1603313011100-8e8d9a8b8f3a?auto=format&fit=crop&w=600&q=80" alt="Silicon Covers">
-<h3>Silicon Covers</h3>
-<p>Soft Protective Covers</p>
-<div class="price">Contact for Price</div>
-<a href="https://wa.me/923135705334?text=I%20am%20interested%20in%20Silicon%20Covers" target="_blank">WhatsApp</a>
+
+<h3>Mobile Covers</h3>
+
+<p>Silicon & Jelly Covers</p>
+
+<a href="https://wa.me/923135705334?text=I%20am%20interested%20in%20Mobile%20Covers" target="_blank">
+WhatsApp
+</a>
+
 </div>
 
 <div class="card product accessories">
-<img src="https://images.unsplash.com/photo-1603313011100-8e8d9a8b8f3a?auto=format&fit=crop&w=600&q=80" alt="Jelly Covers">
-<h3>Jelly Covers</h3>
-<p>Transparent & Color Covers</p>
-<div class="price">Contact for Price</div>
-<a href="https://wa.me/923135705334?text=I%20am%20interested%20in%20Jelly%20Covers" target="_blank">WhatsApp</a>
-</div>
 
-<div class="card product accessories">
-<img src="https://images.unsplash.com/photo-1603313011100-8e8d9a8b8f3a?auto=format&fit=crop&w=600&q=80" alt="Official Covers">
-<h3>Official Covers</h3>
-<p>Premium Official Covers</p>
-<div class="price">Contact for Price</div>
-<a href="https://wa.me/923135705334?text=I%20am%20interested%20in%20Official%20Covers" target="_blank">WhatsApp</a>
-</div>
-
-<div class="card product accessories">
-<img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=600&q=80" alt="Mobile Lenses">
-<h3>Mobile Lenses</h3>
-<p>Phone Camera Lenses</p>
-<div class="price">Contact for Price</div>
-<a href="https://wa.me/923135705334?text=I%20am%20interested%20in%20Mobile%20Lenses" target="_blank">WhatsApp</a>
-</div>
-
-<div class="card product accessories">
-<img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=600&q=80" alt="Screen Protectors">
 <h3>Screen Protectors</h3>
-<p>Mobile Glass & Protectors</p>
-<div class="price">Contact for Price</div>
-<a href="https://wa.me/923135705334?text=I%20am%20interested%20in%20Screen%20Protectors" target="_blank">WhatsApp</a>
+
+<p>High Quality Protection</p>
+
+<a href="https://wa.me/923135705334?text=I%20am%20interested%20in%20Screen%20Protectors" target="_blank">
+WhatsApp
+</a>
+
 </div>
 
 <div class="card product accessories">
-<img src="https://images.unsplash.com/photo-1609592424684-d9e9e0e6b3c0?auto=format&fit=crop&w=600&q=80" alt="Camera Lens Protectors">
-<h3>Camera Lens Protectors</h3>
-<p>Camera Protection</p>
-<div class="price">Contact for Price</div>
-<a href="https://wa.me/923135705334?text=I%20am%20interested%20in%20Camera%20Lens%20Protectors" target="_blank">WhatsApp</a>
+
+<h3>Chargers & Cables</h3>
+
+<p>Different Types Available</p>
+
+<a href="https://wa.me/923135705334?text=I%20am%20interested%20in%20Chargers%20and%20Cables" target="_blank">
+WhatsApp
+</a>
+
 </div>
 
 <div class="card product accessories">
-<img src="https://images.unsplash.com/photo-1583863788434-e58a36330cf0?auto=format&fit=crop&w=600&q=80" alt="Chargers">
-<h3>Chargers</h3>
-<p>Fast & Standard Chargers</p>
-<div class="price">Contact for Price</div>
-<a href="https://wa.me/923135705334?text=I%20am%20interested%20in%20Chargers" target="_blank">WhatsApp</a>
-</div>
 
-<div class="card product accessories">
-<img src="https://images.unsplash.com/photo-1625842268584-8f3296236761?auto=format&fit=crop&w=600&q=80" alt="USB Cables">
-<h3>USB Cables</h3>
-<p>Type-C, Lightning & Micro USB</p>
-<div class="price">Contact for Price</div>
-<a href="https://wa.me/923135705334?text=I%20am%20interested%20in%20USB%20Cables" target="_blank">WhatsApp</a>
-</div>
+<h3>Earbuds & Headphones</h3>
 
-<div class="card product accessories">
-<img src="https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?auto=format&fit=crop&w=600&q=80" alt="Speakers">
-<h3>Speakers</h3>
-<p>Bluetooth Speakers</p>
-<div class="price">Contact for Price</div>
-<a href="https://wa.me/923135705334?text=I%20am%20interested%20in%20Speakers" target="_blank">WhatsApp</a>
-</div>
+<p>Quality Audio Accessories</p>
 
-<div class="card product accessories">
-<img src="https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?auto=format&fit=crop&w=600&q=80" alt="Earbuds">
-<h3>Earbuds</h3>
-<p>Wireless Earbuds</p>
-<div class="price">Contact for Price</div>
-<a href="https://wa.me/923135705334?text=I%20am%20interested%20in%20Earbuds" target="_blank">WhatsApp</a>
-</div>
+<a href="https://wa.me/923135705334?text=I%20am%20interested%20in%20Earbuds%20and%20Headphones" target="_blank">
+WhatsApp
+</a>
 
-<div class="card product accessories">
-<img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80" alt="Headphones">
-<h3>Headphones</h3>
-<p>Wired & Wireless Headphones</p>
-<div class="price">Contact for Price</div>
-<a href="https://wa.me/923135705334?text=I%20am%20interested%20in%20Headphones" target="_blank">WhatsApp</a>
-</div>
-
-<div class="card product accessories">
-<img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=600&q=80" alt="Handsfree">
-<h3>Handsfree</h3>
-<p>Wired & Wireless Handsfree</p>
-<div class="price">Contact for Price</div>
-<a href="https://wa.me/923135705334?text=I%20am%20interested%20in%20Handsfree" target="_blank">WhatsApp</a>
-</div>
-
-<div class="card product accessories">
-<img src="https://images.unsplash.com/photo-1609592424684-d9e9e0e6b3c0?auto=format&fit=crop&w=600&q=80" alt="Memory Cards">
-<h3>Memory Cards</h3>
-<p>Different Storage Options</p>
-<div class="price">Contact for Price</div>
-<a href="https://wa.me/923135705334?text=I%20am%20interested%20in%20Memory%20Cards" target="_blank">WhatsApp</a>
-</div>
-
-<div class="card product accessories">
-<img src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=600&q=80" alt="Keyboard">
-<h3>Keyboard</h3>
-<p>Computer Keyboards</p>
-<div class="price">Contact for Price</div>
-<a href="https://wa.me/923135705334?text=I%20am%20interested%20in%20Keyboard" target="_blank">WhatsApp</a>
-</div>
-
-<div class="card product accessories">
-<img src="https://images.unsplash.com/photo-1527814050087-3793815479db?auto=format&fit=crop&w=600&q=80" alt="Mouse">
-<h3>Mouse</h3>
-<p>Computer Mouse</p>
-<div class="price">Contact for Price</div>
-<a href="https://wa.me/923135705334?text=I%20am%20interested%20in%20Mouse" target="_blank">WhatsApp</a>
-</div>
-
-<div class="card product accessories">
-<img src="https://images.unsplash.com/photo-1609592424684-d9e9e0e6b3c0?auto=format&fit=crop&w=600&q=80" alt="Power Banks">
-<h3>Power Banks</h3>
-<p>Portable Charging</p>
-<div class="price">Contact for Price</div>
-<a href="https://wa.me/923135705334?text=I%20am%20interested%20in%20Power Banks" target="_blank">WhatsApp</a>
-</div>
-
-<div class="card product accessories">
-<img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=600&q=80" alt="Computer Accessories">
-<h3>Computer Accessories</h3>
-<p>Different Computer Parts</p>
-<div class="price">Contact for Price</div>
-<a href="https://wa.me/923135705334?text=I%20am%20interested%20in%20Computer Accessories" target="_blank">WhatsApp</a>
 </div>
 
 </div>
 
 </section>
+
+<!-- ABOUT -->
 
 <section class="about" id="about">
 
@@ -779,6 +837,8 @@ earbuds, headphones and other mobile & computer accessories.
 </p>
 
 </section>
+
+<!-- CONTACT -->
 
 <section class="contact" id="contact">
 
@@ -794,19 +854,19 @@ earbuds, headphones and other mobile & computer accessories.
 
 <div class="buttons">
 
-<a class="btn whatsapp"
-href="https://wa.me/923135705334"
-target="_blank">
-WhatsApp </a>
+<a class="btn whatsapp" href="https://wa.me/923135705334" target="_blank">
+WhatsApp
+</a>
 
-<a class="btn"
-href="https://www.google.com/maps/search/?api=1&query=Ghouri+Mobile+Mall+Ghouri+Town"
-target="_blank">
-View Location </a>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=Ghouri+Mobile+Mall+Ghouri+Town" target="_blank">
+View Location
+</a>
 
 </div>
 
 </section>
+
+<!-- FOOTER -->
 
 <footer>
 
@@ -816,20 +876,53 @@ View Location </a>
 
 <script>
 
+/* OPEN MENU */
+function openMenu(){
+
+    document.getElementById("sideMenu").classList.add("active");
+
+    document.getElementById("overlay").classList.add("active");
+
+}
+
+
+/* CLOSE MENU */
+function closeMenu(){
+
+    document.getElementById("sideMenu").classList.remove("active");
+
+    document.getElementById("overlay").classList.remove("active");
+
+}
+
+
+/* OPEN/CLOSE SUBMENU */
+function toggleSubmenu(id){
+
+    document.getElementById(id).classList.toggle("active");
+
+}
+
+
+/* SEARCH */
 function searchProducts(){
 
-    let input=document.getElementById("search").value.toLowerCase();
+    let input = document.getElementById("search").value.toLowerCase();
 
-    let products=document.querySelectorAll(".product");
+    let products = document.querySelectorAll(".product");
 
     products.forEach(function(product){
 
-        let text=product.innerText.toLowerCase();
+        let text = product.innerText.toLowerCase();
 
         if(text.includes(input)){
-            product.style.display="block";
+
+            product.style.display = "block";
+
         }else{
-            product.style.display="none";
+
+            product.style.display = "none";
+
         }
 
     });
@@ -837,22 +930,29 @@ function searchProducts(){
 }
 
 
+/* FILTER */
 function filterProducts(category){
 
-    let products=document.querySelectorAll(".product");
+    let products = document.querySelectorAll(".product");
 
     products.forEach(function(product){
 
-        if(category==="all"){
-            product.style.display="block";
+        if(category === "all"){
+
+            product.style.display = "block";
+
         }
 
         else if(product.classList.contains(category)){
-            product.style.display="block";
+
+            product.style.display = "block";
+
         }
 
         else{
-            product.style.display="none";
+
+            product.style.display = "none";
+
         }
 
     });
